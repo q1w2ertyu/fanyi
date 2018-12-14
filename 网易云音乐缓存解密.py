@@ -71,13 +71,17 @@ for song in allsongs:
     if "track_name" in c["tracks"][0]:
         name = (c["tracks"][0]["track_name"])
         song_new_name = path_aim + name + ".mp3"
-        os.rename(song_file, song_new_name)
+        if not os.path.exists(song_new_name):
+            os.rename(song_file, song_new_name)
         print(song_new_name + " COMPLETED!!!")
         print("-" * 100)
     else:
         print(song_file + " COMPLETED!!!")
         print("-" * 100)
     # 删除缓存歌曲，防止未来重新下载
-    os.remove(tempfile)
+    try:
+        os.remove(tempfile)
+    except:
+        pass
 
     num += 1
