@@ -73,6 +73,8 @@ for song in allsongs:
         song_new_name = path_aim + name + ".mp3"
         if not os.path.exists(song_new_name):
             os.rename(song_file, song_new_name)
+        else:
+            print("歌曲{}存在".format(name))
         print(song_new_name + " COMPLETED!!!")
         print("-" * 100)
     else:
